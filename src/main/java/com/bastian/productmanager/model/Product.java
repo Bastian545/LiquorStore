@@ -10,9 +10,11 @@ public class Product {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    //TODO
     private String name;
     private int price;
     private String description;
+
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "category_id")
     private Category category;

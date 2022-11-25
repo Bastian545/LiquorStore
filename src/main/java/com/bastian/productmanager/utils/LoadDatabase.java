@@ -1,7 +1,9 @@
 package com.bastian.productmanager.utils;
 
 import com.bastian.productmanager.dao.CategoryRepo;
+import com.bastian.productmanager.dao.KeyRepo;
 import com.bastian.productmanager.dao.ProductRepo;
+import com.bastian.productmanager.model.ApiKey;
 import com.bastian.productmanager.model.Category;
 import com.bastian.productmanager.model.Product;
 import org.springframework.boot.CommandLineRunner;
@@ -15,7 +17,7 @@ import java.util.List;
 @Configuration
 public class LoadDatabase {
     @Bean
-    CommandLineRunner initDatabaseCategory(CategoryRepo categoryRepo, ProductRepo productRepo) {
+    CommandLineRunner initDatabaseCategory(CategoryRepo categoryRepo, ProductRepo productRepo, KeyRepo keyRepo) {
 
         List<Category> listCat = new ArrayList<>();
         listCat.add(new Category("Piscos"));
@@ -34,9 +36,15 @@ public class LoadDatabase {
         listPro.add(new Product(listCat.get(2), 37L, "https://upload.wikimedia.org/wikipedia/commons/6/63/Helles_im_Glas-Helles_(pale_beer).jpg"));
         listPro.add(new Product(listCat.get(1), 58L, "https://upload.wikimedia.org/wikipedia/commons/6/63/Helles_im_Glas-Helles_(pale_beer).jpg"));
 
+        List<ApiKey> keyList = new ArrayList<>();
+        keyList.add(new ApiKey("abc-123"));
+        keyList.add(new ApiKey("cba-321"));
+        keyList.add(new ApiKey("123-abc"));
+
         return args -> {
             categoryRepo.saveAll(listCat);
             productRepo.saveAll(listPro);
+            keyRepo.saveAll(keyList);
         };
     }
 
