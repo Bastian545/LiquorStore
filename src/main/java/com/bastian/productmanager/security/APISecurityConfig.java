@@ -30,7 +30,6 @@ public class APISecurityConfig extends WebSecurityConfigurerAdapter {
             if (keyRepo.findByKey(principal)== null){
                 apiKeyDb ="";
             }else { apiKeyDb = keyRepo.findByKey(principal).getKeyName();}
-
             if (!principal.equals(apiKeyDb)) {
                 throw new BadCredentialsException("The API key was not found or not the expected value.");
             }
