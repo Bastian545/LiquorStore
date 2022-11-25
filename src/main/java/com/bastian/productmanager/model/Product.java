@@ -10,14 +10,20 @@ public class Product {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    private String name;
+    private int price;
+    private String description;
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "category_id")
     private Category category;
-
     private Long stock;
-
     @Column(name = "file_path")
     private String filePath;
+
+
+
+
+
 
 
     public Product(Category category, Long stock, String filePath) {
