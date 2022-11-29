@@ -1,4 +1,4 @@
-package com.bastian.productmanager.utils;
+package com.bastian.productmanager.utils.database;
 
 import com.bastian.productmanager.dao.CategoryRepo;
 import com.bastian.productmanager.dao.KeyRepo;
@@ -17,7 +17,7 @@ import java.util.List;
 @Configuration
 public class LoadDatabase {
     @Bean
-    CommandLineRunner initDatabaseCategory(CategoryRepo categoryRepo, ProductRepo productRepo, KeyRepo keyRepo) {
+    CommandLineRunner initDatabase(CategoryRepo categoryRepo, ProductRepo productRepo, KeyRepo keyRepo) {
 
         List<Category> listCat = new ArrayList<>();
         listCat.add(new Category("Piscos"));
